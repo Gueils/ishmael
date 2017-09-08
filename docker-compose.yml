@@ -1,0 +1,13 @@
+version: "2"
+
+services:
+  console:
+    image: whalesil/ishmael:development
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    working_dir: /code
+    volumes:
+        - .:/code
+    stdin_open: true
+    tty: true
