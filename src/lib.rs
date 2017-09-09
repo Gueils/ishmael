@@ -8,11 +8,9 @@ extern crate curl;
 extern crate rustc_serialize;
 
 use client::Client;
-use users::UserClient;
 use repositories::RepositoryClient;
 
 pub struct Github {
-    pub users: UserClient,
     pub repositories: RepositoryClient,
 }
 
@@ -21,12 +19,10 @@ impl Github {
         let client = Client;
 
         Github {
-            users: UserClient::new(client),
             repositories: RepositoryClient::new(client),
         }
     }
 }
 
 pub mod client;
-pub mod users;
 pub mod repositories;

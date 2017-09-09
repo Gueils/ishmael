@@ -13,16 +13,18 @@ impl RepositoryClient {
         RepositoryClient { client: c }
     }
 
-    pub fn by_user(self, username: &str) -> Vec<Repository> {
-        let mut url = "https://api.github.com/users/".to_string();
-        url.push_str(username);
-        url.push_str("/repos");
+    pub fn search(self, keyword: &str) ->Vec<Repository> {
+        let mut url = "https://api.github.com/search/repositories?utf8=%E2%9C%93&q=topic%3A".to_string();
+        url.push_str(keyword);
+        url.push_str("&type=Repositories");
 
         let req = self.client.request(url.as_ref());
-
-        let repos: Vec<Repository> = json::decode(req.as_ref()).unwrap();
+        
+        let query: Query = json::decode(req.as_ref()).unwrap();
+        let repos: Vec<Repository> = query.items;
 
         return repos;
+
     }
 }
 
@@ -37,4 +39,10 @@ pub struct Repository {
     pub clone_url: String,
     pub git_url: String,
     pub languages_url: String,
+}
+
+#[allow(dead_code)]
+#[derive(RustcDecodable)]
+pub struct Query {
+    pub items: Vec<Repository>,
 }
