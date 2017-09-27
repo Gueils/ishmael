@@ -1,22 +1,41 @@
 extern crate ishmael;
 
-use ishmael::Github;
-use std::process::Command;
+use ishmael::Search;
+use ishmael::Forker;
+use ishmael::Cloner;
+use ishmael::Analyzer;
+use ishmael::PullRequester;
+use ishmael::Cleaner;
 
 fn main() {
-  let github = Github::new();
-  let repositories = github.repositories.search("rails");
+    if cfg!(target_os = "windows") {
+        panic!("Sorry, this OS is not supported yet.");
+    }
 
-  for repo in repositories.iter() {
-    println!("Ishmael will dockerize the hell out of these open source projects: {:?} FTFW!!", repo.name);
+    let search = Search::new();
+    let results = search.repositories.with("rails");
 
-    let output = Command::new("git")
-      .arg("clone")
-      .arg(&repo.clone_url)
-      .status()
-      .expect("didn't work.");
+    for repo in results.iter() {
+        let forker = Forker::new(&repo.clone_url);
+        println!("Ishmael sees a whale at the horizon, he decides to pick up his harpoon: {:?}", repo.name);
+        let forked_repo_url = forker.process();
 
-    println!("output: {}", output);
-    break;
-  }
+        let cloner = Cloner::new(&forked_repo_url);
+        println!("Ishmael gets closer and closer");
+        cloner.dispatch();
+
+        let analyzer = Analyzer::new();
+        println!("Ishmael takes his time. He ponders a strategy");
+        analyzer.process();
+
+        let pull_requester = PullRequester::new();
+        println!("Ishmael attacks!");
+        pull_requester.process();
+
+        let cleaner = Cleaner::new();
+        cleaner.process();
+        println!("Ishmael aims bows before the great whale, what a hunt!");
+
+        break;
+    }
 }
