@@ -11,3 +11,5 @@ services:
         - .:/code
     stdin_open: true
     tty: true
+    env_file:
+        - dev.env
