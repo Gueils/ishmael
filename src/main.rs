@@ -13,7 +13,7 @@ fn main() {
     }
 
     let search = Search::new();
-    let results = search.repositories.with("rails");
+    let results = search.github.with("rails");
 
     for repo in results.iter() {
         let forker = Forker::new(&repo.clone_url);

@@ -2,14 +2,16 @@
 
 use rustc_serialize::json;
 use client::Client;
+use repository::Repository;
+use query::Query;
 
-pub struct RepositoryClient {
+pub struct Github {
     client: Client,
 }
 
-impl RepositoryClient {
-    pub fn new(c: Client) -> RepositoryClient {
-        RepositoryClient { client: c }
+impl Github {
+    pub fn new(c: Client) -> Github {
+        Github { client: c }
     }
 
     pub fn with(self, keyword: &str) -> Vec<Repository> {
@@ -24,23 +26,4 @@ impl RepositoryClient {
 
         return repos;
     }
-}
-
-#[allow(dead_code)]
-#[derive(RustcDecodable)]
-pub struct Repository {
-    pub name: String,
-    pub full_name: String,
-    pub description: Option<String>,
-    pub url: String,
-    pub html_url: String,
-    pub clone_url: String,
-    pub git_url: String,
-    pub languages_url: String,
-}
-
-#[allow(dead_code)]
-#[derive(RustcDecodable)]
-pub struct Query {
-    pub items: Vec<Repository>,
 }
