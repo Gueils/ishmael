@@ -8,7 +8,9 @@ services:
       dockerfile: dev.Dockerfile
     working_dir: /code
     volumes:
+        - ../temp:/repos
         - .:/code
+        - /var/run/docker.sock:/var/run/docker.sock
     stdin_open: true
     tty: true
     env_file:

@@ -10,8 +10,8 @@ pub struct Github {
 }
 
 impl Github {
-    pub fn new(c: Client) -> Github {
-        Github { client: c }
+    pub fn new(client: Client) -> Github {
+        Github { client: client }
     }
 
     pub fn with(self, keyword: &str) -> Vec<Repository> {
@@ -19,11 +19,22 @@ impl Github {
         url.push_str(keyword);
         url.push_str("&type=Repositories");
 
-        let req = self.client.request(url.as_ref());
+        let req = self.client.get(url.as_ref());
 
         let query: Query = json::decode(req.as_ref()).unwrap();
         let repos: Vec<Repository> = query.items;
 
         return repos;
+    }
+
+    pub fn repo(self, full_name: &str) -> Repository {
+        let mut url = "https://api.github.com/repos/".to_string();
+        url.push_str(full_name);
+        url.push_str("/forks");
+
+        let req = self.client.post(url.as_ref(), "");
+        let repo: Repository = json::decode(req.as_ref()).unwrap();
+
+        return repo;
     }
 }
