@@ -1,21 +1,25 @@
+use client::Client;
+use github::Github;
+
 /// Ishmael::Forker
 /// Allows to fork a repository.
 ///
 /// Usage:
 /// ```
+/// let forker = Forker::new();
+///
+/// forker.github.repo("full_name_repo");
 /// ```
-pub struct Forker<'a> {
-    repo_url: &'a String,
+pub struct Forker {
+    pub github: Github,
 }
 
-impl<'a> Forker<'a> {
-    pub fn new(repo_url: &String) -> Forker {
-        Forker {
-            repo_url: repo_url,
-        }
-    }
+impl Forker {
+    pub fn new() -> Forker {
+        let client = Client;
 
-    pub fn process(&self) -> &String {
-        return self.repo_url;
+        Forker {
+            github: Github::new(client),
+        }
     }
 }

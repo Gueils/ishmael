@@ -16,15 +16,15 @@ fn main() {
     let results = search.github.with("rails");
 
     for repo in results.iter() {
-        let forker = Forker::new(&repo.clone_url);
+        let forker = Forker::new();
         println!("Ishmael sees a whale at the horizon, he decides to pick up his harpoon: {:?}", repo.name);
-        let forked_repo_url = forker.process();
+        let repo = forker.github.repo(&repo.full_name);
 
-        let cloner = Cloner::new(&forked_repo_url);
+        let cloner = Cloner::new(&repo.clone_url);
         println!("Ishmael gets closer and closer");
         cloner.dispatch();
 
-        let analyzer = Analyzer::new();
+        let analyzer = Analyzer::new(&repo.name);
         println!("Ishmael takes his time. He ponders a strategy");
         analyzer.process();
 
