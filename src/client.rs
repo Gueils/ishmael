@@ -25,6 +25,7 @@ impl Client {
         let token = format!("token {}", env!("GITHUB_API_KEY"));
         let mut headers = HashMap::new();
         headers.insert("User-Agent", "Ishmael-Github-Client");
+        headers.insert("Conten-Type", "application/json");
         headers.insert("Authorization", token.as_str());
 
         let res = http::handle()
