@@ -37,4 +37,13 @@ impl Github {
 
         return repo;
     }
+
+    pub fn pr(self, full_name: &str, body: &str) {
+        let mut url = "https://api.github.com/repos/".to_string();
+        url.push_str(full_name);
+        url.push_str("/pulls");
+
+        let req = self.client.post(url.as_ref(), body);
+        println!("{:?}", req);
+    }
 }

@@ -1,4 +1,6 @@
 use std::process::Command;
+use client::Client;
+use github::Github;
 
 /// Ishmael::PullRequester
 /// Allows to make a pull request.
@@ -8,11 +10,14 @@ use std::process::Command;
 /// ```
 pub struct PullRequester<'a> {
   name: &'a String,
+  pub github: Github,
 }
 
 impl<'a> PullRequester<'a> {
     pub fn new(name: &String) -> PullRequester {
+        let client = Client;
         PullRequester {
+            github: Github::new(client),
             name: name
         }
     }
