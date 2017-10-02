@@ -28,7 +28,7 @@ fn main() {
         println!("Ishmael takes his time. He ponders a strategy");
         analyzer.process();
 
-        let pull_requester = PullRequester::new();
+        let pull_requester = PullRequester::new(&repo.name);
         println!("Ishmael attacks!");
         pull_requester.process();
 

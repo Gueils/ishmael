@@ -8,6 +8,7 @@ services:
       dockerfile: dev.Dockerfile
     working_dir: /code
     volumes:
+        - ~/repositories/gueils/ssh:/root/.ssh
         - ../temp:/repos
         - .:/code
         - /var/run/docker.sock:/var/run/docker.sock
