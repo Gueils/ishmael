@@ -6,6 +6,9 @@ readme = "README.md"
 repository = "https://github.com/Gueils/ishmael"
 license = "MIT"
 authors = ["Luis Ignacio <email@luisignac.io>"]
+homepage = "https://github.com/Gueils/ishmael"
+keywords = ["docker","dockerization"]
+categories = ["docker", "dockerization"]
 
 [dependencies]
 curl = "0.2"
