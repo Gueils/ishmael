@@ -13,3 +13,6 @@ categories = ["docker", "dockerization"]
 [dependencies]
 curl = "0.2"
 rustc-serialize = "0.3"
+[badges]
+
+travis-ci = { repository = "gueils/ishmael", branch = "master" }
