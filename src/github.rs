@@ -15,7 +15,7 @@ impl Github {
     }
 
     pub fn with(self, keyword: &str) -> Vec<Repository> {
-        let mut url = "https://api.github.com/search/repositories?utf8=%E2%9C%93&q=topic%3A".to_string();
+        let mut url = "https://api.github.com/search/repositories?utf8=%E2%9C%93&q=topic%3A&".to_string();
         url.push_str(keyword);
         url.push_str("&type=Repositories");
 
@@ -43,7 +43,6 @@ impl Github {
         url.push_str(full_name);
         url.push_str("/pulls");
 
-        let req = self.client.post(url.as_ref(), body);
-        println!("{:?}", req);
+        self.client.post(url.as_ref(), body);
     }
 }

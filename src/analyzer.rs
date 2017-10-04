@@ -36,13 +36,11 @@ impl<'a> Analyzer<'a> {
                   "--env", 
                   "API_BASE_URI=whales.herokuapp.com",
                   "--env",
-                  "BELUGAS_CODE=/Users/thelastinuit/repositories/gueils/temp/rails",
-                  //belugas_env.as_str(),
+                  belugas_env.as_str(),
                   "--volume", 
                   "/var/run/docker.sock:/var/run/docker.sock",
                   "--volume",
-                  "/Users/thelastinuit/repositories/gueils/temp/rails:/code",
-                  //volume.as_str(), 
+                  volume.as_str(), 
                   "gueils/whales",
             ])
             .output()

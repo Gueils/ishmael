@@ -33,12 +33,10 @@ fn main() {
         pull_requester.process();
 
         let body = "{\"title\":\"Docker\",\"body\":\"This is Ishmael the Hunter. A bot that tries to dockerize your project. This is a very very BETA, ay!. In time Ishmael will become smarter.\",\"head\":\"ishmaelthehunter:wip/docker\",\"base\":\"master\"}";
-        pull_requester.github.pr(&repo.full_name, body);
+        pull_requester.github.pr(&forked_repo.full_name, body);
 
-        let cleaner = Cleaner::new();
+        let cleaner = Cleaner::new(&forked_repo.name);
         cleaner.process();
         println!("Ishmael aims bows before the great whale, what a hunt!");
-
-        break;
     }
 }

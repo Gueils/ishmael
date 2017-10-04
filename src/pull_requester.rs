@@ -7,6 +7,8 @@ use github::Github;
 ///
 /// Usage:
 /// ```
+/// let pull_requester = PullRequester::new(&repo_name);
+/// pull_requester.process();
 /// ```
 pub struct PullRequester<'a> {
   name: &'a String,
@@ -65,6 +67,7 @@ impl<'a> PullRequester<'a> {
             .current_dir(&current_dir)
             .args(&[
                   "push",
+                  "-f",
                   "origin",
                   "wip/docker"
             ])
