@@ -1,6 +1,6 @@
 [package]
 name = "ishmael"
-version = "0.1.0"
+version = "0.1.1"
 description = "Rust console app to hunt open source whales, er, projects and dockerize them."
 readme = "README.md"
 repository = "https://github.com/Gueils/ishmael"
@@ -13,6 +13,6 @@ categories = ["docker", "dockerization"]
 [dependencies]
 curl = "0.2"
 rustc-serialize = "0.3"
-[badges]
 
+[badges]
 travis-ci = { repository = "gueils/ishmael", branch = "master" }
