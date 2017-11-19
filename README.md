@@ -7,8 +7,21 @@
 Ishmael is command line application made with Rust. It allows the Whales ecosystem to look repos in github and tries to dockerize them.
 
 ## Usage
-PENDING
+Basically, you need to first install the binary:
 
+```bash
+$ cargo install
+```
+
+That will install the binary `ishmael`. Then you can just run:
+
+```bash
+$ ishmael
+```
+And see the magic happen. 
+
+### WANTED
+- [ ] Take argument to change `keyword` for search.
 
 ## Development
 
