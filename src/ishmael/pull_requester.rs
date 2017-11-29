@@ -1,6 +1,6 @@
 use std::process::Command;
-use client::Client;
-use github::Github;
+use ishmael::client::Client;
+use ishmael::github::Github;
 
 /// Ishmael::PullRequester
 /// Allows to make a pull request.

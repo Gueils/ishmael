@@ -1,9 +1,9 @@
 #[allow(unused_attributes)]
 
 use rustc_serialize::json;
-use client::Client;
-use repository::Repository;
-use query::Query;
+use ishmael::client::Client;
+use ishmael::repository::Repository;
+use ishmael::query::Query;
 
 pub struct Github {
     client: Client,
@@ -15,7 +15,7 @@ impl Github {
     }
 
     pub fn with(self, keyword: &str) -> Vec<Repository> {
-        let mut url = "https://api.github.com/search/repositories?utf8=%E2%9C%93&q=topic%3A&".to_string();
+        let mut url = "https://api.github.com/search/repositories?q=topic:".to_string();
         url.push_str(keyword);
         url.push_str("&type=Repositories");
 
