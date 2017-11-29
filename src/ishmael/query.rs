@@ -1,4 +1,4 @@
-use repository::Repository;
+use ishmael::repository::Repository;
 
 #[allow(dead_code)]
 #[derive(RustcDecodable)]

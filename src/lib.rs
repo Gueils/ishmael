@@ -4,22 +4,22 @@
 extern crate curl;
 extern crate rustc_serialize;
 
-mod repository;
-mod query;
-mod search;
-mod forker;
-mod cloner;
-mod analyzer;
-mod pull_requester;
-mod cleaner;
-mod client;
-mod github;
+pub mod ishmael {
+    pub mod repository;
+    pub mod query;
+    pub mod search;
+    pub mod forker;
+    pub mod cloner;
+    pub mod analyzer;
+    pub mod pull_requester;
+    pub mod cleaner;
+    pub mod client;
+    pub mod github;
+}
 
-pub use repository::Repository;
-pub use query::Query;
-pub use search::Search;
-pub use forker::Forker;
-pub use cloner::Cloner;
-pub use analyzer::Analyzer;
-pub use pull_requester::PullRequester;
-pub use cleaner::Cleaner;
+pub use ishmael::search;
+pub use ishmael::forker;
+pub use ishmael::cloner;
+pub use ishmael::analyzer;
+pub use ishmael::pull_requester;
+pub use ishmael::cleaner;

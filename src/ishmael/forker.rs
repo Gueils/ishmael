@@ -1,5 +1,5 @@
-use client::Client;
-use github::Github;
+use ishmael::client::Client;
+use ishmael::github::Github;
 
 /// Ishmael::Forker
 /// Allows to fork a repository.
